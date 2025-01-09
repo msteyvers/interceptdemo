@@ -277,10 +277,12 @@ function endDemo() {
     replayButton.style.display = 'block';
     replayButton.addEventListener('click', replayDemo);
 
-    aiRequest.style.display = 'block';
-    aiRequest.disabled = false;
-
     [ allSolutions , bestSolution ] = enumerateAllSolutions();
+
+    if (AI_HELP==2) {
+        aiRequest.style.display = 'block';
+        aiRequest.disabled = false;
+    }
 
     if (AI_HELP==1) {
         canShowAISolution = true;
@@ -323,9 +325,6 @@ function initGame(seed) {
         aiinfo.innerHTML = `<p>AI assistance will be available in this session. </p>`;
     } else if (AI_HELP==2) {
         aiinfo.innerHTML = `<p>AI assistance is available on request in this session. </p>`;
-
-        //aiRequest.style.display = 'block';
-        //aiRequest.disabled = true; // Disables the button
     }
 
     // Enumerate all possible interception sequences of length NUM_SELECTIONS 
